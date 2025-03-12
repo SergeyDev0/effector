@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<div class="container">
+    <header>Шапка</header>
+    <main>Основная часть</main>
+    <aside>Боковая панель</aside>
+    <footer>Футер</footer>
+	</div>
+
+	<style>
+		.container {
+				display: flex;
+				flex-direction: column;
+				gap: 10px;
+		}
+
+		header, footer {
+				background: #ccc;
+				padding: 10px;
+		}
+
+		main {
+				flex: 1;
+				background: #eee;
+				padding: 10px;
+		}
+
+		aside {
+				width: 200px;
+				background: #ddd;
+				padding: 10px;
+		}
+
+		@media (max-width: 768px) {
+				.container {
+						flex-direction: column;
+				}
+				aside {
+						width: 100%;
+				}
+		}
+	</style>
+</body>
+</html>

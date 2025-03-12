@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<div id="circle" style="position: absolute; width: 50px; height: 50px; background-color: red; border-radius: 50%;"></div>
+	<script>
+		// Окружность, следующая за курсором мыши
+		document.addEventListener('mousemove', function(event) {
+			const circle = document.getElementById('circle');
+			circle.style.left = event.clientX + 'px';
+			circle.style.top = event.clientY + 'px';
+		});
+	</script>
+</body>
+</html>

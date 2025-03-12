@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Image</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="500" height="500"></canvas>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+
+        // Загрузка изображения
+        const img = new Image();
+        img.src = 'image.jpg'; // Укажите путь к вашему изображению
+        img.onload = function() {
+            // Отрисовка изображения на canvas
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+            // Преобразование изображения в темно-серый цвет
+            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            const data = imageData.data;
+
+            for (let i = 0; i < data.length; i += 4) {
+                const avg = (data[i] + data[i + 1] + data[i + 2]) / 3;
+                data[i] = avg * 0.5; // Темно-серый цвет (уменьшаем яркость)
+                data[i + 1] = avg * 0.5;
+                data[i + 2] = avg * 0.5;
+            }
+
+            ctx.putImageData(imageData, 0, 0);
+
+            // Добавление текста
+            ctx.font = '30px Arial';
+            ctx.fillStyle = 'white';
+            ctx.textAlign = 'center';
+            ctx.fillText('Добро пожаловать в наш магазин', canvas.width / 2, canvas.height - 20);
+        };
+    </script>
+</body>
+</html>
